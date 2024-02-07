@@ -1,6 +1,4 @@
 {
-  "release": {
-    "branches": ["stable"],
-    "repositoryUrl": "https://github.com/MakairaIO/storefront-core"
-  }
+  "branches": ["stable"],
+  "repositoryUrl": "https://github.com/MakairaIO/storefront-core"
 }
