@@ -1,0 +1,7 @@
+package-lock.json
+node_modules/
+.npmignore
+.prettierignore
+.eslintignore
+.gitignore
+.husky/

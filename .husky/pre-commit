@@ -1,0 +1,2 @@
+npx tsc --noEmit --module system
+npm run lint-staged
