@@ -14,13 +14,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '20'
 
       - name: Install Dependencies
         run: npm install
-
-      - name: Install special build dependency
-        run: npm install @rollup/rollup-linux-x64-gnu
 
       - name: Build
         run: npm run build
