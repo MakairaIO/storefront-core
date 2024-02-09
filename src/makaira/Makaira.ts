@@ -24,14 +24,9 @@ export type RequestBuilderMapping = {
 export type FetchType = keyof RequestBuilderMapping
 
 export abstract class Makaira {
-  protected static makaira: Makaira
   abstract apiUrl: string
   abstract apiInstance: string
   abstract productsPerPage: number
-
-  public static get(): Makaira {
-    return this.makaira
-  }
 
   public request<T extends FetchType>(type: T): RequestBuilderMapping[T] {
     switch (type) {
