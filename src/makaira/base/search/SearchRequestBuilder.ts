@@ -1,19 +1,12 @@
 import { Makaira } from '../../Makaira'
-import { BaseRequestBuilder } from '../BaseRequestBuilder'
+import { PageishRequestBuilder } from '../PageIshRequestBuilder'
 import { SearchRequest } from './SearchRequest'
 
-export class SearchRequestBuilder extends BaseRequestBuilder<SearchRequest> {
+export class SearchRequestBuilder extends PageishRequestBuilder<SearchRequest> {
   constructor(apiInfo: Makaira) {
     super(apiInfo, new SearchRequest())
-    // this.setParams();
     return this
   }
-
-  // private setParams() {
-  //   this.setSearchPhrase(this.params.get("searchPhrase") ?? "");
-  //   this.setCount(this.params.get("count") ?? this.apiInfo.productsPerPage);
-  //   this.setOffset(this.params.get("offset") ?? 0);
-  // }
 
   public setUrl(url: string) {
     this.request.url = encodeURI(url)

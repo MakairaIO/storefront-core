@@ -17,7 +17,7 @@ export type Constraints = {
 
 export abstract class BaseRequest {
   aggregations: {
-    [k: string]: number | string
+    [k: string]: any
   }
   public enableAggregations? = true
   sorting: {
@@ -59,7 +59,7 @@ export abstract class BaseRequest {
     this.aggregations = aggregations
   }
 
-  public addAggregation(key: string, value: number | string) {
+  public addAggregation<T extends string>(key: T, value: any) {
     this.aggregations[key] = value
   }
 

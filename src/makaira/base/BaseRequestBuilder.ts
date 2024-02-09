@@ -3,8 +3,22 @@ import type { Makaira } from '../Makaira'
 import type { CustomFilter, RequestBodyCustomFilter } from './CustomFilter'
 import { fetchFromMakaira } from './fetchFromMakaira'
 
+export type ServerContext = {
+  req: {
+    headers: HeadersInit
+  }
+  params:
+    | {
+        [key: string]: string | string[] | undefined
+      }
+    | URLSearchParams
+}
+
 export class BaseRequestBuilder<T extends BaseRequest> {
   protected request: T
+
+  protected serverContext?: ServerContext
+  protected params: ServerContext['params'] = new URLSearchParams()
 
   protected seoUrl: string | undefined
   protected apiInfo: Makaira
@@ -58,6 +72,7 @@ export class BaseRequestBuilder<T extends BaseRequest> {
     return this.request
   }
 
+  // TODO: add result typing
   public fetch(additionalHeaders?: RequestInit['headers']) {
     return fetchFromMakaira({
       apiInfo: this.apiInfo,

@@ -11,7 +11,7 @@ export type NewRequestManagerOptions = {
   makaira: Makaira
 }
 
-type RequestBuilderMapping = {
+export type RequestBuilderMapping = {
   snippet: SnippetRequestBuilder
   page: PageRequestBuilder
   search: SearchRequestBuilder
@@ -35,23 +35,23 @@ export abstract class Makaira {
 
   public request<T extends FetchType>(type: T): RequestBuilderMapping[T] {
     switch (type) {
-    case 'snippet':
-      return new SnippetRequestBuilder(this) as RequestBuilderMapping[T]
-    case 'document':
-      return new DocumentRequestBuilder(this) as RequestBuilderMapping[T]
-    case 'menu':
-      return new MenuRequestBuilder(this) as RequestBuilderMapping[T]
-    case 'privateSearch':
-      return new PageRequestBuilder(this) as RequestBuilderMapping[T]
-    case 'recommendation':
-      return new RecommendationRequestBuilder(
-        this
-      ) as RequestBuilderMapping[T]
-    case 'search':
-      return new SearchRequestBuilder(this) as RequestBuilderMapping[T]
-    case 'page':
-    default:
-      return new PageRequestBuilder(this) as RequestBuilderMapping[T]
+      case 'snippet':
+        return new SnippetRequestBuilder(this) as RequestBuilderMapping[T]
+      case 'document':
+        return new DocumentRequestBuilder(this) as RequestBuilderMapping[T]
+      case 'menu':
+        return new MenuRequestBuilder(this) as RequestBuilderMapping[T]
+      case 'privateSearch':
+        return new PageRequestBuilder(this) as RequestBuilderMapping[T]
+      case 'recommendation':
+        return new RecommendationRequestBuilder(
+          this
+        ) as RequestBuilderMapping[T]
+      case 'search':
+        return new SearchRequestBuilder(this) as RequestBuilderMapping[T]
+      case 'page':
+      default:
+        return new PageRequestBuilder(this) as RequestBuilderMapping[T]
     }
   }
 }
