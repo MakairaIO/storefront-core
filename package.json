@@ -33,6 +33,9 @@
     "email": "nf@marmalade.group"
   },
   "license": "ISC",
+  "peerDependencies": {
+    "stylelint": "^16.2.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
@@ -60,6 +63,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-typescript2": "^0.34.1",
+    "stylelint": "^16.2.1",
     "ts-jest": "^29.0.5",
     "tslib": "^2.5.0",
     "typedoc": "^0.23.25",
