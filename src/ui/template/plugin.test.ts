@@ -7,7 +7,6 @@ describe('PostCSS plugin', () => {
     await postcss([makairaThemePlugin])
       .process(input, { from: undefined })
       .then((result) => {
-        console.log(result.css)
         expect(result.css.includes(':root')).toBeTruthy()
       })
   })
