@@ -1,5 +1,5 @@
 import stylelint, { type Rule } from 'stylelint'
-import { getVariableNames } from '../template/variableNames'
+import { variableNames } from '../template/variableNames'
 import { colorRules, spacingRules } from './rules'
 
 const {
@@ -31,15 +31,10 @@ const ruleFunction: Rule = (primary) => {
 
     if (!validOptions) return
 
-    const borderRadiusNames = getVariableNames('borderRadius')
-    const breakpointNames = getVariableNames('breakpoints')
-    const spacingNames = getVariableNames('spacing')
-    const typescaleNames = getVariableNames('typescale')
-
     root.walkAtRules('media', (atRule) => {
       // check if the media query value is not a breakpoint name
       const breakpoint = atRule.params
-      if (!breakpointNames.includes(breakpoint)) {
+      if (!breakpoint.includes(variableNames['breakpoints'])) {
         report({
           result,
           ruleName,
@@ -73,7 +68,7 @@ const ruleFunction: Rule = (primary) => {
         // invalid spacing value
         const validSpacingOutsideOfVariables = ['0', 'auto']
         if (
-          spacingNames.every((name) => !value.includes(name)) &&
+          !value.includes(variableNames['spacing']) &&
           !validSpacingOutsideOfVariables.some((spacing) =>
             value.includes(spacing)
           )
@@ -89,7 +84,7 @@ const ruleFunction: Rule = (primary) => {
       }
 
       if (prop === 'font-size') {
-        if (typescaleNames.every((name) => !value.includes(name))) {
+        if (!value.includes(variableNames['typescale'])) {
           report({
             result,
             ruleName,
@@ -102,7 +97,7 @@ const ruleFunction: Rule = (primary) => {
 
       if (prop === 'border-radius') {
         // if no borderradiusname is found in the value
-        if (borderRadiusNames.every((name) => !value.includes(name))) {
+        if (!value.includes(variableNames['borderRadius'])) {
           report({
             result,
             ruleName,
