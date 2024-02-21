@@ -45,19 +45,19 @@ async function throwMakairaError(response: Response) {
 
 function getEndpoint(type: FetchType) {
   switch (type) {
-  case 'search':
-    return '/search/public'
-  case 'privateSearch':
-    return '/search'
-  case 'document':
-    return '/documents/public'
-  case 'recommendation':
-    return '/recommendation/public'
-  case 'snippet':
-    return '/enterprise/snippets'
-  case 'page':
-    return '/enterprise/page'
-  case 'menu':
-    return '/enterprise/menu'
+    case 'search':
+      return '/search/public'
+    case 'privateSearch':
+      return '/search'
+    case 'document':
+      return '/documents/public'
+    case 'recommendation':
+      return '/recommendation/public'
+    case 'snippet':
+      return '/enterprise/snippets'
+    case 'page':
+      return '/enterprise/page'
+    case 'menu':
+      return '/enterprise/menu'
   }
 }
