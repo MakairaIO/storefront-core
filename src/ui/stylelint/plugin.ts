@@ -84,6 +84,9 @@ const ruleFunction: Rule = (primary) => {
       }
 
       if (prop === 'font-size') {
+        if (value.includes('%')) {
+          return
+        }
         if (!value.includes(variableNames['typescale'])) {
           report({
             result,
@@ -101,7 +104,7 @@ const ruleFunction: Rule = (primary) => {
           report({
             result,
             ruleName,
-            message: messages.invalidSpacing(prop, value),
+            message: messages.invalidBorderRadius(prop, value),
             node: decl,
             word: prop,
           })
